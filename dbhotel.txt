@@ -18,7 +18,7 @@ WHERE `date_of_birth` > '1988-12-31';
 QUERY:
 SELECT *
 FROM `ospiti`
-WHERE `date_of_birth` <= '2000-09-24';
+WHERE `date_of_birth` <= '1999-09-24';
 --------------------------------------------------------
 
 4.  Seleziona tutti gli ospiti il cui nome inizia con la D
