@@ -43,9 +43,29 @@ WHERE prenotazioni.updated_at LIKE "2018-05%";
 ------------------------------------------------------
 6) Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
 QUERY:
+/*  Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano */
+SELECT SUM(price)
+FROM `pagamenti`
+INNER JOIN `prenotazioni`
+ON pagamenti.prenotazione_id = prenotazioni.id
+INNER JOIN `stanze`
+ON prenotazioni.stanza_id = stanze.id
+WHERE stanze.floor = 1;
 
 ------------------------------------------------------
 7) Prendi i dati di fatturazione per la prenotazione con id=7
 QUERY:
+/* Prendi i dati di fatturazione per la prenotazione con id=7 */
+SELECT ospiti.name AS "nome_ospite", ospiti.lastname AS "cognome_ospite", pagamenti.price AS "prezzo", paganti.name AS "nome_pagante", paganti.lastname AS "cognome_pagante", paganti.address AS "indirizzo del pagante", stanze.room_number AS "numero stanza", stanze.floor AS "piano della stanza"
+FROM `pagamenti`
+INNER JOIN `prenotazioni`
+ON pagamenti.prenotazione_id = prenotazioni.id
+INNER JOIN `stanze`
+ON prenotazioni.stanza_id = stanze.id
+INNER JOIN `paganti`
+ON pagamenti.pagante_id = paganti.id
+INNER JOIN `ospiti`
+ON paganti.ospite_id = ospiti.id
+WHERE prenotazioni.id = 7;
 
 ------------------------------------------------------
